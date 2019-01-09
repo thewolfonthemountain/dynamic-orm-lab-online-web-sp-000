@@ -2,7 +2,7 @@ require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
 class InteractiveRecord
-  attr_accessor :id, :name, :grade
+#  attr_accessor :id, :name, :grade
 
   def self.table_name
     self.to_s.downcase.pluralize
@@ -23,6 +23,7 @@ class InteractiveRecord
   end
 
   self.column_names.each do |col_name|
+    binding.pry
     attr_accessor col_name.to_sym
   end
 
