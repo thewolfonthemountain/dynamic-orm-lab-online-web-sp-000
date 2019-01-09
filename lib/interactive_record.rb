@@ -19,7 +19,7 @@ class InteractiveRecord
     table_info.each do |column|
       column_names << column["name"]
     end
-    column_names
+    column_names.compact
   end
 
   self.column_names.each do |col_name|
@@ -28,6 +28,10 @@ class InteractiveRecord
   end
 
   def initialize(options={})
+    self.column_names.each do |col_name|
+      binding.pry
+      attr_accessor col_name.to_sym
+    end
     options.each do |property, value|
       self.send("#{property}=", value)
     end
